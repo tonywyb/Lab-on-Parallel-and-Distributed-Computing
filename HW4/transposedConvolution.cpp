@@ -240,13 +240,13 @@ int main(int argc, char* argv[]) {
     cl_uint numPlatforms;
     errNum = clGetPlatformIDs(0, NULL, &numPlatforms);
     if (errNum != CL_SUCCESS) {
-    	cout << "wrong" << endl;
+    	printf("wrong\n");
     }
     if (numPlatforms > 0) {
     	platforms = new cl_platform_id[(int)numPlatforms];
     	errNum = clGetPlatformIDs(numPlatforms, platforms, NULL);
     	if (errNum != CL_SUCCESS) {
-    		cout << "Error: clGetPlatformIDs" << endl;
+    		printf("Error: clGetPlatformIDs\n");
     		return -1;
     	}
     }
@@ -258,7 +258,6 @@ int main(int argc, char* argv[]) {
     		sizeof(pbuff),
     		pbuff,
     		NULL);
-    	cout << pbuff << endl;
     }
 
     cl_context_properties cp[3] = {
@@ -275,7 +274,7 @@ int main(int argc, char* argv[]) {
     						NULL,
     						&errNum);
     if (errNum != CL_SUCCESS) {
-    	cout << "error: creating context" << endl;
+    	printf("error: creating context\n");
     	return -1;
     }
 
@@ -288,12 +287,12 @@ int main(int argc, char* argv[]) {
    					&deviceListSize);
 
    	if (errNum != CL_SUCCESS) {
-   		cout << "Error: clGetContextInfo" << endl;
+   		printf("Error: clGetContextInfo\n");
    		return -1;
    	}
    	cl_device_id *devices = new cl_device_id[deviceListSize];
    	if (deviceListSize == 0) {
-   		cout << "No device found" << endl;
+   		printf("No device found\n");
    		return -1;
    	}
 
@@ -303,7 +302,7 @@ int main(int argc, char* argv[]) {
    							devices,
    							NULL);
    	if (errNum != CL_SUCCESS) {
-   		cout << "Error: second clGetContextInfo" << endl;
+   		printf("Error: second clGetContextInfo\n");
    		return -1;
    	}
    	size_t souceSize1[] = {strlen(kernelSourceCode1)};

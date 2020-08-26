@@ -131,7 +131,7 @@ int main(int argc, char **argv)
 	err = clGetPlatformIDs(0, NULL, &num_platforms);
 	if (err < 0)
 	{
-		cout << "don't support openCL" << endl;
+		printf("don't support openCL\n");
 		exit(0);
 	}
 
@@ -158,7 +158,7 @@ int main(int argc, char **argv)
 	}
 	if (!cuda)
 	{
-		cout << "no nvidia cuda!" << endl;
+		printf("no nvidia cuda!\n");
 		exit(0);
 	}
 	cl_context_properties prop[] = { CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(platform), 0 };
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
 
 	if (argc != 5)
 	{
-		cout << "need to be ./xx k size dimension filename" << endl;
+		printf("need to be ./xx k size dimension filename\n");
 		MPI_Finalize();
 		exit(0);
 	}
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
 		fin.open(filename);
 		if (!fin)
 		{
-			cout << "cannot open file" << endl;
+			printf("cannot open file\n");
 			MPI_Finalize();
 			exit(0);
 		}
@@ -244,14 +244,6 @@ int main(int argc, char **argv)
 		int myRow = row_each_proc;
 		if (myid == numprocs - 1)
 			myRow = restSize;
-		//cout << myid << endl;
-		/*for (int i = 0; i < myRow; i++)
-		{
-			for (int j = 0; j < dimension; j++)
-				cout << dataset[i * dimension + j] << ' ';
-			cout << endl;
-		}*/
-		
 	}
 	double testData[200];
 	map<int, double> index_dis;
@@ -327,7 +319,6 @@ int main(int argc, char **argv)
 				//printf("index: %d dis: %lf\n", allResults[j].index, allResults[j].distance);
 				label_freq[label[allResults[j].index]]++;
 			}
-			//cout << endl;
 
 			map<string, int>::iterator p = label_freq.begin();
 			string tempLabel;
@@ -394,7 +385,6 @@ int main(int argc, char **argv)
 				allResults[j].distance = vec_index_dis[j].second;
 			}
 			MPI_Send(allResults, k, mpi_result, 0, 0, MPI_COMM_WORLD);
-			//cout << "sent" << endl;
 			index_dis.clear();
 		}
 		MPI_Barrier(MPI_COMM_WORLD);
@@ -406,6 +396,5 @@ int main(int argc, char **argv)
 		printf("time: %d s\n", (endTime - startTime) / CLOCKS_PER_SEC);
 	}
 	MPI_Finalize();
-	//system("pause");
 	return 0;
 }
