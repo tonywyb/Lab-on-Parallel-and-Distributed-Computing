@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <algorithm>
-#include <iostream>
 #include <omp.h>
 using namespace std;
 int a[5000000];

@@ -23,36 +23,19 @@ int merge(int beg, int end) {
         tmp[i] = num[i];
 
     i = beg;
-    // #pragma omp parallel
-    // {
-    //     #pragma omp single
-    //     {
-            while (lpos <= mid && rpos <= end)              
-                if (tmp[lpos] <= tmp[rpos])
-                    num[i++] = tmp[lpos++];
-                else {
-                    num[i++] = tmp[rpos++];
-                    ret += mid - lpos + 1;
-                }
-
-    //         }
-    //     }
-    // }
+    while (lpos <= mid && rpos <= end)              
+        if (tmp[lpos] <= tmp[rpos])
+            num[i++] = tmp[lpos++];
+        else {
+            num[i++] = tmp[rpos++];
+            ret += mid - lpos + 1;
+        }
     
 
     while (lpos <= mid)
         num[i++] = tmp[lpos++];
-    // int j;
-    // #pragma omp for
-    // for (j = 0;lpos <= mid;lpos++) {
-    //     num[i++] = tmp[lpos];
-    // }
     while (rpos <= end)
         num[i++] = tmp[rpos++];
-    // #pragma omp for 
-    // for (j = 0;rpos <= end;rpos++) {
-    //     num[i++] = tmp[rpos];
-    // }
     return ret;
 }
 int main() {
