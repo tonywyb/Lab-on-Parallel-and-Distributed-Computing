@@ -1,5 +1,5 @@
 # Lab-on-Parallel-and-Distributed-Computing
-Lab on "Introduction to Parallel and Distributed Computing", Spring 2018.
+Lab on "Introduction to Parallel and Distributed Computing", Spring 2018, Peking University.
 
 * [HW 1: Data Partition and Reduction in OpenMP](HW1): Use data partition in OpenMP, ***parallel*** and ***for*** pragma, to parallelize common algorithm problems including finding the single number in an array that only appears once, computing the square of hadamard product.
 
