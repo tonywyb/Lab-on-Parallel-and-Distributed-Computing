@@ -7,6 +7,6 @@ Parallelization Programming Practicum using OpenMP, MPI, OpenCL.
 
 * [HW 3: Message Passing Interface for Parallel Programming](HW3): Use message passing model MPI to parallelize the process of prime number filtering.
 
-*[Final Project: ](FinalProject): 
+* [Final Project: ](FinalProject): 
 - Implemented Transposed Convolution algorithm using OpenCL, measured performance with different work-item configuration.
 - Utilized MPI to implement K-Nearest-Neighbor algorithm, improved node distance computation by GPU acceleration using OpenCL.
